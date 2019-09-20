@@ -739,8 +739,8 @@ def plot_t_x_plot(G_origin, solu, dot_line=False, plt_ttl = True, width = 1200, 
     
     
     #------------play with parameters here------------#
-max_speed = 15
-terminal_loc = [0,100,200,300]
+max_speed = 50
+terminal_loc = [0,100]
 shift_hour = 12
 data = data_init(sample=True, WE_number=35)
 G = graph_create(data, terminal_loc = terminal_loc, shift_hr = shift_hour)
@@ -748,7 +748,7 @@ def monte_carlo(n = 10):
     spd_list = []
     solution_list = []
     for i in range(n):
-        solution = construct_heu_feasi_sol(G, max_speed=max_speed, dist_first=False, rand = True)
+        solution = construct_heu_feasi_sol(G, max_speed=max_speed, dist_first=True, rand = True)
         solution = path_release(G, sol_dic=solution[0], max_speed=max_speed, release_condition=1)   
         solution = meta_heu(G, sol_dic=solution[0], max_speed=max_speed)
         avg_spd = avg_speed(G, sol_dic=solution[0])
